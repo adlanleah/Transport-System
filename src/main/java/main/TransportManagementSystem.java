@@ -9,7 +9,6 @@ import services.TransportService;
 import services.Route;
 
 import java.util.Date;
-import java.util.Scanner;
 
 /**
  * Main TransportManagementSystem class
@@ -18,8 +17,6 @@ import java.util.Scanner;
 public class TransportManagementSystem {
 
     private TransportService transportService;
-    private Scanner scanner;
-
     public TransportManagementSystem() {
         this.transportService = new TransportService();
     // this.scanner = new Scanner(System.in);
