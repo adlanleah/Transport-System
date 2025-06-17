@@ -43,7 +43,7 @@ public class Bus implements Serviceable, Trackable, Schedulable {
         this.scheduledTrips = new ArrayList<>();
         this.scheduleStatus = "Available";
     }
-
+/* 
     public Bus(String v001, String toyota, String coaster, String ubG123X, int i, boolean b) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
@@ -53,9 +53,9 @@ public class Bus implements Serviceable, Trackable, Schedulable {
     }
 
     public Bus(String id, String bus, String model, int capacity, boolean inService) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        throw new UnsupportedOperationException("Not supported yet."); 
     }
-    
+*/
     // Getter and Setter methods (Encapsulation)
     public String getVehicleId() { return vehicleId; }
     public String getModel() { return model; }
