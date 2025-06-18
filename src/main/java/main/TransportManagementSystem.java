@@ -9,6 +9,7 @@ import services.TransportService;
 import services.Route;
 
 import java.util.Date;
+import java.util.Scanner;
 
 /**
  * Main TransportManagementSystem class
@@ -17,9 +18,11 @@ import java.util.Date;
 public class TransportManagementSystem {
 
     private TransportService transportService;
+    private Scanner scanner;
+
     public TransportManagementSystem() {
         this.transportService = new TransportService();
-    // this.scanner = new Scanner(System.in);
+        this.scanner = new Scanner(System.in);
     }
 
     public static void main(String[] args) {
@@ -39,8 +42,8 @@ public class TransportManagementSystem {
         // Demonstrate OOP principles
         demonstrateOOPPrinciples();
 
-        // Interactive menu (optional)
-        // runInteractiveMenu();
+        // Interactive menu
+        runInteractiveMenu();
     }
 
     private void initializeSystemData() {
@@ -119,6 +122,45 @@ public class TransportManagementSystem {
         System.out.println("Available Vehicles:");
         for (String vehicle : transportService.getAvailableVehicles()) {
             System.out.println(vehicle);
+        }
+    }
+
+    private void runInteractiveMenu() {
+        while (true) {
+            System.out.println("\n========= MAIN MENU =========");
+            System.out.println("1. Request Transport");
+            System.out.println("2. List Available Vehicles");
+            System.out.println("3. View Service Statistics");
+            System.out.println("0. Exit");
+            System.out.print("Enter choice: ");
+            String input = scanner.nextLine();
+            switch (input) {
+                case "1":
+                    System.out.print("Enter User ID: ");
+                    String userId = scanner.nextLine();
+                    System.out.print("Enter Destination: ");
+                    String destination = scanner.nextLine();
+                    System.out.print("Enter Time (e.g., 09:00 AM): ");
+                    String time = scanner.nextLine();
+                    String result = transportService.processTransportRequest(userId, destination, time);
+                    System.out.println(result);
+                    break;
+                case "2":
+                    System.out.println("Available Vehicles:");
+                    for (String vehicle : transportService.getAvailableVehicles()) {
+                        System.out.println(vehicle);
+                    }
+                    break;
+                case "3":
+                    System.out.println(transportService.getServiceStatistics());
+                    break;
+                case "0":
+                    System.out.println("Exiting system. Goodbye!");
+                    scanner.close();
+                    return;
+                default:
+                    System.out.println("Invalid choice. Please try again.");
+            }
         }
     }
 }
