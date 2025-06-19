@@ -17,8 +17,8 @@ import java.util.Scanner;
  */
 public class TransportManagementSystem {
 
-    private TransportService transportService;
-    private Scanner scanner;
+    private final TransportService transportService;
+    private final Scanner scanner;
 
     public TransportManagementSystem() {
         this.transportService = new TransportService();
@@ -47,7 +47,7 @@ public class TransportManagementSystem {
     }
 
     private void initializeSystemData() {
-        System.out.println("🔧 INITIALIZING SYSTEM DATA...\n");
+        System.out.println(" INITIALIZING SYSTEM DATA...\n");
 
         // Create users demonstrating Inheritance and Polymorphism
         Student student1 = new Student("U001", "Alice Johnson", "alice@vu.edu", "0756123456",
@@ -92,7 +92,7 @@ public class TransportManagementSystem {
     }
 
     private void demonstrateOOPPrinciples() {
-        System.out.println("\n🧩 DEMONSTRATING OOP PRINCIPLES...\n");
+        System.out.println("\n DEMONSTRATING OOP PRINCIPLES...\n");
 
         // Example: Student requests transport
         String studentRequest = transportService.processTransportRequest("U001", "Library", "09:00 AM");
@@ -135,7 +135,7 @@ public class TransportManagementSystem {
             System.out.print("Enter choice: ");
             String input = scanner.nextLine();
             switch (input) {
-                case "1":
+                case "1" -> {
                     System.out.print("Enter User ID: ");
                     String userId = scanner.nextLine();
                     System.out.print("Enter Destination: ");
@@ -144,22 +144,22 @@ public class TransportManagementSystem {
                     String time = scanner.nextLine();
                     String result = transportService.processTransportRequest(userId, destination, time);
                     System.out.println(result);
-                    break;
-                case "2":
+                }
+                case "2" -> {
                     System.out.println("Available Vehicles:");
                     for (String vehicle : transportService.getAvailableVehicles()) {
                         System.out.println(vehicle);
                     }
-                    break;
-                case "3":
-                    System.out.println(transportService.getServiceStatistics());
-                    break;
-                case "0":
-                    System.out.println("Exiting system. Goodbye!");
-                    scanner.close();
+                }
+                case "3" -> System.out.println(transportService.getServiceStatistics());
+                case "0" -> {
+                    try (scanner) {
+                        System.out.println("Exiting system. Goodbye!");
+                    }
                     return;
-                default:
-                    System.out.println("Invalid choice. Please try again.");
+                }
+
+                default -> System.out.println("Invalid choice. Please try again.");
             }
         }
     }
